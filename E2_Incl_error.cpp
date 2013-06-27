@@ -407,7 +407,7 @@ unsigned char E2_Device::Custom_mem_adress_read(void)
         }
         E2Bus_stop();
 
-
+}
 
 }
 
