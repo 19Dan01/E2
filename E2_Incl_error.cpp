@@ -48,7 +48,7 @@ E2_Device::E2_Device(int pinSDA, int pinSCL)
 }
 
 /* Private Functions */
-/* Arduino speed test: mean time to execute: 10µs */
+/* Arduino speed test: mean time to execute: 10ï¿½s */
 void E2_Device::set_SDA(void) // set port-pin (pinSDA)
 {
     pinMode(_pinSDA, OUTPUT);
@@ -366,3 +366,97 @@ unsigned char E2_Device::Custom_mem_read(void)
         internal_pointer_addr = 0;
     }
 }
+
+
+
+unsigned char E2_Device::Custom_mem_adress_read(void)
+
+{
+    E2Bus_start();
+    E2Bus_send(0x50); // Read from custom mem request
+    if (check_ack()==ACK)
+    {
+        E2Bus_send(0x00)
+    }
+    
+    if (check_ack()==ACK)
+    {
+        E2Bus_send(0xC1)
+    }
+     check_ack()
+    
+    E2Bus_stop();
+    
+    delay(50)
+    
+    E2Bus_start();
+    E2Bus_send(0x51); // Read from custom mem request
+    if (check_ack()==ACK)
+    {
+        information = E2Bus_read();
+        send_ack();
+        checksum_03 = E2Bus_read();
+        send_nak(); // terminate communication
+        E2Bus_stop();
+        if (((0x51 + information) % 256) == checksum_03) // checksum OK?
+        {
+            return information;
+        }
+        else {
+            return 'read_error';
+        }
+        E2Bus_stop();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
