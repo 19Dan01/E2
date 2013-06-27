@@ -40,7 +40,7 @@ public:
     float CO2_read(void);
     float CO2mean_read(void);
     unsigned char Custom_mem_read(void);
-    unsigned char Custom_mem_adress_read(void);
+    float Custom_mem_adress_read(void);
 
 };
 
