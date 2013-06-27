@@ -369,7 +369,7 @@ unsigned char E2_Device::Custom_mem_read(void)
 
 
 
-unsigned char E2_Device::Custom_mem_adress_read(void)
+float E2_Device::Custom_mem_adress_read(void)
 
 {
     E2Bus_start();
