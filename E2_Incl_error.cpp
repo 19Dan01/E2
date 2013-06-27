@@ -376,18 +376,18 @@ unsigned char E2_Device::Custom_mem_adress_read(void)
     E2Bus_send(0x50); // Read from custom mem request
     if (check_ack()==ACK)
     {
-        E2Bus_send(0x00)
+        E2Bus_send(0x00);
     }
     
     if (check_ack()==ACK)
     {
-        E2Bus_send(0xC1)
+        E2Bus_send(0xC1);
     }
-     check_ack()
+     check_ack();
     
     E2Bus_stop();
     
-    delay(50)
+    delay(50);
     
     E2Bus_start();
     E2Bus_send(0x51); // Read from custom mem request
